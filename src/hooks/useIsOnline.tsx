@@ -29,6 +29,15 @@ export function useIsOnline(): boolean {
     window.addEventListener("offline", () => {
       setIsOnline(false);
     });
+
+    return () => {
+      window.removeEventListener("online", () => {
+        setIsOnline(true);
+      });
+      window.removeEventListener("offline", () => {
+        setIsOnline(false);
+      });
+    };
   }, []);
   return isOnline;
 }
