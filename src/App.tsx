@@ -1,8 +1,10 @@
 // import Todo from "./components/Todo";
 // import { useTodos } from "./hooks/useTodos";
 
-import IsUserOnline from "./components/IsUserOnline";
-import MousePosition from "./components/MousePosition";
+import SetCountUsingUseAppIntervalHook from "./components/UseIntervalApp";
+
+// import IsUserOnline from "./components/IsUserOnline";
+// import MousePosition from "./components/MousePosition";
 
 function App() {
   // const { todos, loading } = useTodos(5);
@@ -15,8 +17,9 @@ function App() {
       }}
     >
       {/* {loading ? "loading..." : todos.map((todo) => <Todo todo={todo} />)} */}
-      <IsUserOnline />
-      <MousePosition />
+      {/* <IsUserOnline /> */}
+      {/* <MousePosition /> */}
+      <SetCountUsingUseAppIntervalHook />
     </div>
   );
 }
