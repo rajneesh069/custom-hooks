@@ -1,8 +1,10 @@
-import Todo from "./components/Todo";
-import { useTodos } from "./utils/customHooks";
+// import Todo from "./components/Todo";
+// import { useTodos } from "./hooks/useTodos";
+
+import IsUserOnline from "./components/IsUserOnline";
 
 function App() {
-  const { todos, loading } = useTodos(5);
+  // const { todos, loading } = useTodos(5);
 
   return (
     <div
@@ -11,7 +13,8 @@ function App() {
         border: "1px solid gray",
       }}
     >
-      {loading ? "loading..." : todos.map((todo) => <Todo todo={todo} />)}
+      {/* {loading ? "loading..." : todos.map((todo) => <Todo todo={todo} />)} */}
+      <IsUserOnline />
     </div>
   );
 }

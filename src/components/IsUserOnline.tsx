@@ -1,4 +1,4 @@
-import { useIsOnline } from "../utils/customHooks";
+import { useIsOnline } from "../hooks/useIsOnline";
 
 export default function IsUserOnline() {
   const isUserOnline = useIsOnline();
