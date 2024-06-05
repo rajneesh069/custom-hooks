@@ -1,7 +1,8 @@
 // import Todo from "./components/Todo";
 // import { useTodos } from "./hooks/useTodos";
 
-import SetCountUsingUseAppIntervalHook from "./components/UseIntervalApp";
+import Debounce from "./components/DebounceHookApp";
+// import SetCountUsingUseAppIntervalHook from "./components/UseIntervalApp";
 
 // import IsUserOnline from "./components/IsUserOnline";
 // import MousePosition from "./components/MousePosition";
@@ -19,7 +20,8 @@ function App() {
       {/* {loading ? "loading..." : todos.map((todo) => <Todo todo={todo} />)} */}
       {/* <IsUserOnline /> */}
       {/* <MousePosition /> */}
-      <SetCountUsingUseAppIntervalHook />
+      {/* <SetCountUsingUseAppIntervalHook /> */}
+      <Debounce />
     </div>
   );
 }
