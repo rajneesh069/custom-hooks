@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-export function useInterval(callback: () => unknown, ms: number | 0) {
+export function useInterval(callback: () => unknown, ms: number = 200): void {
   useEffect(() => {
     const val = setInterval(() => {
       callback();

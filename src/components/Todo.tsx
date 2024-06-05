@@ -1,10 +1,12 @@
+import { useTodos } from "../hooks/useTodos";
+
 export interface todo {
   id: number;
   title: string;
   description: string;
 }
 
-export default function Todo({ todo }: { todo: todo }) {
+function ShowTodo({ todo }: { todo: todo }) {
   return (
     <div
       style={{
@@ -19,6 +21,19 @@ export default function Todo({ todo }: { todo: todo }) {
       <p style={{ color: "black" }}>id: {todo.id}</p>
       <p style={{ color: "orangered" }}>title: {todo.title}</p>
       <p style={{ color: "orangered" }}>description :{todo.description}</p>
+    </div>
+  );
+}
+
+export default function Todo() {
+  const { todos, loading, error } = useTodos(5);
+
+  return (
+    <div>
+      {error
+        ? "Error fetching data"
+        : todos.map((todo) => <ShowTodo todo={todo} />)}
+      {loading ? "loading..." : todos.map((todo) => <ShowTodo todo={todo} />)}
     </div>
   );
 }
