@@ -47,11 +47,10 @@ export default function Todo() {
         <button onClick={handlePollingDelay}>Set Delay</button>
       </div>
       <div>
-        {error
-          ? "Error fetching data"
-          : todos.map((todo) => <ShowTodo key={todo.id} todo={todo} />)}
         {loading
           ? "loading..."
+          : error
+          ? "Error fetching todos"
           : todos.map((todo) => <ShowTodo key={todo.id} todo={todo} />)}
       </div>
     </div>

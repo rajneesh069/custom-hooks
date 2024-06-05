@@ -14,17 +14,19 @@ export function useAutoRefresh(n: number): {
   useEffect(() => {
     const interval: number = setInterval(() => {
       axios
-        /* For local development 
-        .get("http://localhost:8080/todos", {
+        /*  .get("http://localhost:8080/todos", {
           headers: {
             "Content-Type": "application/json",
           },
         }) */
-        .get("https://dummy-server-for-react-js-lazy-loading.onrender.com", {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        })
+        .get(
+          "https://dummy-server-for-react-js-lazy-loading.onrender.com/todos",
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        )
         .then((response) => {
           setTodos(response.data);
           setLoading(false);
@@ -37,16 +39,19 @@ export function useAutoRefresh(n: number): {
     }, n * 1000);
 
     axios
-      /*  .get("http:///localhost:8080/todos", {
+      /* .get("http:///localhost:8080/todos", {
         headers: {
           "Content-Type": "application/json",
         },
       }) */
-      .get("https://dummy-server-for-react-js-lazy-loading.onrender.com", {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
+      .get(
+        "https://dummy-server-for-react-js-lazy-loading.onrender.com/todos",
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
       .then((response) => {
         setTodos(response.data);
         setLoading(false);
