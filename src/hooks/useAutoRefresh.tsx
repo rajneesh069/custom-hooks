@@ -14,7 +14,7 @@ export function useAutoRefresh(n: number): {
   useEffect(() => {
     const interval: number = setInterval(() => {
       axios
-        .get("http:///localhost:8080/todos", {
+        .get("http://localhost:8080/todos", {
           headers: {
             "Content-Type": "application/json",
           },
