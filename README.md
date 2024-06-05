@@ -2,6 +2,8 @@
 
 This repo aims to dive deep into the applications of custom hooks and how they make the code clean and more readable.
 
+#### Make sure that the backend(used in the auto refresh hook) is active at : `https://dummy-server-for-react-js-lazy-loading.onrender.com`
+
 ### 1. `useAutoRefresh` hook :
 
 This hook demonstrates the concept of polling(by using `useEffect`, `useState`, `setInterval` and `axios` internally) to get dynamic data and separation of concerns by creating a hook and importing it into the main file which gives `loading`, `error`, `data` so that it could be used in suitable cases for UI rendering and ultimately making the code more readable and clean.
