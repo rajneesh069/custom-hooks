@@ -1,30 +1,23 @@
-# React + TypeScript + Vite
+## Custom Hooks
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This repo aims to dive deep into the applications of custom hooks and how they make the code clean and more readable.
 
-Currently, two official plugins are available:
+### 1. `useAutoRefresh` hook :
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This hook demonstrates the concept of polling(by using `useEffect`, `useState`, `setInterval` and `axios` internally) to get dynamic data and separation of concerns by creating a hook and importing it into the main file which gives `loading`, `error`, `data` so that it could be used in suitable cases for UI rendering and ultimately making the code more readable and clean.
 
-## Expanding the ESLint configuration
+### 2. `useInterval` hook :
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+This hook takes a `function` and a `number` as inputs and executes the said `function` at the given intervals.
 
-- Configure the top-level `parserOptions` property like this:
+### 3. `useIsOnline` hook :
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+Using the `window.navigator.onLine` functionality, we check if the user is connected to Internet or not, and display the current status.
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+### 4. `useMousePosition` hook :
+
+This hook uses the `mousemove` event and attaches it to the window object and then we use the `event.clientX` and `event.clientY` properties given by the `event` object to get the position of the mouse on the screen and display it on the screen.
+
+### 5. `useDebounce` hook :
+
+This hook is used to basically `reduce the number of API calls` or `reduce the number of operations which include the server` by updating the inputs after the user stops typing or stops giving an input and then registering it and acting on it rather acting on the input whenever it changes as that could lead to `un-necessary API calls` or `expensive computation on the server`.
