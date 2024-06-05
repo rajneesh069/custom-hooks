@@ -1,4 +1,5 @@
-import { useTodos } from "../hooks/useTodos";
+import { useState, useRef } from "react";
+import { useAutoRefresh } from "../hooks/useAutoRefresh";
 
 export interface todo {
   id: number;
@@ -26,14 +27,33 @@ function ShowTodo({ todo }: { todo: todo }) {
 }
 
 export default function Todo() {
-  const { todos, loading, error } = useTodos(5);
+  const [pollingDelay, setPollingDelay] = useState<number>(5);
+  const { todos, loading, error } = useAutoRefresh(pollingDelay);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const handlePollingDelay = () => {
+    if (inputRef.current) {
+      const newDelay = Number(inputRef.current.value);
+      setPollingDelay(newDelay);
+    }
+  };
 
   return (
-    <div>
-      {error
-        ? "Error fetching data"
-        : todos.map((todo) => <ShowTodo todo={todo} />)}
-      {loading ? "loading..." : todos.map((todo) => <ShowTodo todo={todo} />)}
+    <div
+      style={{ display: "flex", flexDirection: "column", gap: 5, margin: 5 }}
+    >
+      <div style={{ display: "flex", gap: 2 }}>
+        <input type="number" placeholder="Delay in seconds" ref={inputRef} />
+        <button onClick={handlePollingDelay}>Set Delay</button>
+      </div>
+      <div>
+        {error
+          ? "Error fetching data"
+          : todos.map((todo) => <ShowTodo key={todo.id} todo={todo} />)}
+        {loading
+          ? "loading..."
+          : todos.map((todo) => <ShowTodo key={todo.id} todo={todo} />)}
+      </div>
     </div>
   );
 }

@@ -1,10 +1,10 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useRef, useState } from "react";
 // import { useEffect } from "react";
 import { useDebounce } from "../hooks/useDebounce";
 
 export default function Debounce() {
   const [input, setInput] = useState<string>("");
-  const [delay, setDelay] = useState<number | string>("");
+  const delay = useRef<HTMLInputElement>(null);
   const [delayInHook, setDelayInHook] = useState<number>(0);
   const debouncedValue = useDebounce(input, delayInHook);
 
@@ -17,24 +17,15 @@ export default function Debounce() {
     setInput(e.target.value);
   };
 
-  const handleDelayChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setDelay(Number(e.target.value));
-  };
-
   return (
     <div
       style={{ display: "flex", flexDirection: "column", gap: 4, margin: 5 }}
     >
       <div style={{ display: "flex", gap: 2 }}>
-        <input
-          type="number"
-          placeholder="Delay in MS"
-          value={delay}
-          onChange={handleDelayChange}
-        />
+        <input type="number" placeholder="Delay in MS" ref={delay} />
         <button
           onClick={() => {
-            setDelayInHook(delay as number);
+            setDelayInHook(Number(delay.current?.value));
           }}
         >
           Set Delay

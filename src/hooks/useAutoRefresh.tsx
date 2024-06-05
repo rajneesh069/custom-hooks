@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { todo } from "../components/Todo";
 import axios from "axios";
 
-export function useTodos(n: number): {
+export function useAutoRefresh(n: number): {
   todos: todo[];
   loading: boolean;
   error: boolean;
