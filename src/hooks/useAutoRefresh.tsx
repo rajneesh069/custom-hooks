@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { todo } from "../components/Todo";
+import { todo } from "../components/UseAutoRefreshHookApp";
 import axios from "axios";
 
 export function useAutoRefresh(n: number): {
@@ -14,7 +14,13 @@ export function useAutoRefresh(n: number): {
   useEffect(() => {
     const interval: number = setInterval(() => {
       axios
+        /* For local development 
         .get("http://localhost:8080/todos", {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }) */
+        .get("https://dummy-server-for-react-js-lazy-loading.onrender.com", {
           headers: {
             "Content-Type": "application/json",
           },
